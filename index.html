@@ -1,123 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Estrutura HTML5 da atividade de Programação Web. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Território de Passagem | Monte Alegre - PA</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body id="corpo">
-    <header class="cabecalho">
-        <nav class="navegacao">
-            <a class="logo" href="#inicio">QUILOMBO PASSAGEM</a>
-            <div class="links">
-                <a href="#historia">História</a>
-                <a href="#territorio">Território</a>
-                <a href="#cultura">Cultura</a>
-                <a href="#organizacao">Organização</a>
-            </div>
-            <!-- Evento click para alterar a aparência. -->
-            <button id="botaoTema" type="button">Modo escuro</button>
-        </nav>
-    </header>
+<body>
+    <main class="container">
+        <header>
+            <p class="tag">PRÁTICA 3 · PROGRAMAÇÃO WEB</p>
+            <h1>Controle de Gastos</h1>
+            <p>Cadastre seus gastos e mantenha os registros salvos no navegador.</p>
+        </header>
 
-    <main>
-        <section id="inicio" class="hero">
-            <div class="hero-texto">
-                <span class="etiqueta">Monte Alegre • Pará • Amazônia • Brasil</span>
-                <h1>Território de <strong>Passagem</strong></h1>
-                <p class="subtitulo">Memória, identidade, organização comunitária e luta pelo território quilombola no município de Monte Alegre, Pará.</p>
-                <div class="botoes">
-                    <a class="botao botao-principal" href="#historia">Conheça nossa história</a>
-                    <!-- Segundo evento click: mostra/oculta a linha do tempo. -->
-                    <button id="botaoLinhaTempo" class="botao botao-contorno" type="button">Ver linha do tempo</button>
+        <section class="card">
+            <h2>Novo gasto</h2>
+
+            <form id="formGasto">
+                <div class="form-grid">
+                    <div class="campo">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" id="descricao" placeholder="Ex.: Supermercado" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" required>
+                            <option value="">Selecione</option>
+                            <option value="Alimentação">Alimentação</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Moradia">Moradia</option>
+                            <option value="Lazer">Lazer</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="valor">Valor (R$)</label>
+                        <input type="number" id="valor" min="0.01" step="0.01" placeholder="0,00" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="data">Data</label>
+                        <input type="date" id="data" required>
+                    </div>
                 </div>
-                <div id="linhaTempo" class="linha-tempo oculto">
-                    <div><strong>2006</strong><span>Certidão de Autorreconhecimento da comunidade pela Fundação Cultural Palmares.</span></div>
-                    <div><strong>2009</strong><span>ARQPASSAGEM solicita a formalização do procedimento de regularização fundiária.</span></div>
-                    <div><strong>2020</strong><span>É publicado o Protocolo de Consulta Prévia, Livre e Informada das comunidades.</span></div>
-                    <div><strong>2025</strong><span>O MPF recomenda medidas para a conclusão da regularização territorial.</span></div>
-                </div>
-            </div>
-            <!-- Ilustração feita somente com HTML e CSS. -->
-            <div class="paisagem" aria-label="Ilustração simbólica de paisagem amazônica">
-                <div class="sol"></div><div class="lua"></div>
-                <div class="morro morro-um"></div><div class="morro morro-dois"></div>
-                <div class="rio"></div><div class="casa"><span class="telhado"></span><span class="porta"></span></div>
-                <div class="arvore arvore-um"></div><div class="arvore arvore-dois"></div>
-            </div>
-        </section>
 
-        <section class="numeros">
-            <article><strong>2006</strong><span>autorreconhecimento certificado</span></article>
-            <article><strong>2009</strong><span>pedido de regularização pela ARQPASSAGEM</span></article>
-            <article><strong>2020</strong><span>protocolo comunitário de consulta</span></article>
-            <article><strong>2025</strong><span>recomendação do MPF pela regularização</span></article>
-        </section>
-
-        <section id="historia" class="secao">
-            <div class="cabecalho-secao"><span>01 — HISTÓRIA</span><h2>Uma comunidade que constrói sua própria trajetória.</h2></div>
-            <div class="duas-colunas">
-                <div><p class="texto-grande">Passagem é uma comunidade quilombola localizada na zona rural de Monte Alegre, no Pará. A trajetória contemporânea registrada em pesquisa acadêmica acompanha a transformação da Associação de Moradores da Passagem em Associação de Remanescentes de Quilombo de Passagem entre 2009 e 2019.</p></div>
-                <aside class="cartao destaque"><span class="icone">✦</span><h3>Identidade</h3><p>O reconhecimento da comunidade e a organização coletiva aparecem como elementos centrais da trajetória estudada.</p></aside>
-            </div>
-        </section>
-
-        <section id="territorio" class="secao secao-terra">
-            <div class="cabecalho-secao"><span>02 — TERRITÓRIO</span><h2>Território é memória, pertencimento e direito.</h2></div>
-            <div class="territorio-grid">
-                <div class="mapa-simbolico"><div class="marcador">PASSAGEM</div><div class="linha linha-a"></div><div class="linha linha-b"></div><div class="linha linha-c"></div><small>Gleba Estadual Pacari</small></div>
-                <div class="texto-territorio">
-                    <h3>Regularização territorial</h3>
-                    <p>Segundo a documentação institucional consultada, a ARQPASSAGEM solicitou em 2009 a formalização do procedimento de regularização fundiária. O procedimento passou posteriormente ao Instituto de Terras do Pará (Iterpa).</p>
-                    <p>Em fevereiro de 2025, o Ministério Público Federal recomendou ao Iterpa a conclusão do procedimento de titulação e a emissão de título de propriedade coletiva em nome da ARQPASSAGEM.</p>
-                    <div class="alerta"><strong>Situação documentada em 2025</strong><span>O MPF registrou que famílias aguardavam a titulação havia quase 20 anos e recomendou medidas para garantir a segurança durante os trabalhos de campo.</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="cultura" class="secao">
-            <div class="cabecalho-secao"><span>03 — CULTURA E MEMÓRIA</span><h2>Saberes que permanecem vivos.</h2></div>
-            <div class="cards">
-                <article class="cartao"><span class="numero">A</span><h3>Memória</h3><p>A memória coletiva e a organização comunitária são elementos importantes para compreender a trajetória de Passagem.</p></article>
-                <article class="cartao"><span class="numero">B</span><h3>Consulta</h3><p>Em 2020, Passagem, Nazaré do Airi e Peafú publicaram um Protocolo de Consulta Prévia, Livre e Informada.</p></article>
-                <article class="cartao"><span class="numero">C</span><h3>Participação</h3><p>O protocolo orienta a consulta às comunidades quando empreendimentos, projetos de lei ou medidas administrativas puderem afetar suas vidas.</p></article>
-            </div>
-            <div class="citacao"><span>“</span><p>O território não é apresentado apenas como uma área física: a documentação pesquisada relaciona a questão territorial à organização, à identidade e à continuidade da comunidade.</p></div>
-        </section>
-
-        <section id="organizacao" class="secao secao-verde">
-            <div class="cabecalho-secao"><span>04 — ARQPASSAGEM</span><h2>Organização comunitária.</h2></div>
-            <div class="organizacao-grid">
-                <div><p class="texto-grande">A Associação da Comunidade Remanescente de Quilombola de Passagem — ARQPASSAGEM — aparece na documentação institucional como parte fundamental do processo de regularização territorial.</p></div>
-                <div class="lista"><div><strong>01</strong><span>Representação comunitária</span></div><div><strong>02</strong><span>Participação no processo de titulação</span></div><div><strong>03</strong><span>Defesa da identidade e do território</span></div></div>
-            </div>
-        </section>
-
-        <section id="participar" class="secao participacao">
-            <div class="cabecalho-secao"><span>05 — PARTICIPE</span><h2>Deixe uma mensagem para o território.</h2></div>
-            <form id="formulario" class="formulario">
-                <label for="nome">Seu nome</label>
-                <input id="nome" name="nome" type="text" placeholder="Digite seu nome">
-                <p id="contador">0 caracteres</p>
-                <label for="mensagemTexto">Sua mensagem</label>
-                <textarea id="mensagemTexto" name="mensagemTexto" rows="4" placeholder="Escreva uma mensagem sobre memória, cultura ou território..."></textarea>
-                <button class="botao botao-principal" type="submit">Enviar mensagem</button>
+                <button type="submit" class="btn-primary">Adicionar gasto</button>
             </form>
-            <div id="mensagemResultado" class="resultado" aria-live="polite">Sua mensagem aparecerá aqui.</div>
+        </section>
+
+        <section class="card">
+            <div class="lista-header">
+                <div>
+                    <h2>Gastos cadastrados</h2>
+                    <p id="contador">0 registros</p>
+                </div>
+                <button id="btnLimpar" class="btn-danger" type="button">Limpar registros</button>
+            </div>
+
+            <div id="listaGastos" class="lista"></div>
+
+            <div id="mensagemVazia" class="vazio">
+                Nenhum gasto cadastrado ainda.
+            </div>
+        </section>
+
+        <section class="total">
+            <span>Total dos gastos</span>
+            <strong id="totalGastos">R$ 0,00</strong>
         </section>
     </main>
 
-    <footer class="rodape">
-        <div><strong>Território de Passagem</strong><p>Monte Alegre — Pará • Projeto acadêmico de Programação Web</p></div>
-        <div class="fontes">
-            <span>Fontes de pesquisa:</span>
-            <a href="https://repositorio.ufopa.edu.br/items/80e61fbe-5a59-449a-90fd-aa0ad96b2b39" target="_blank" rel="noopener">UFOPA — pesquisa sobre Passagem</a>
-            <a href="https://www.mpf.mp.br/o-mpf/unidades/pr-pa/noticias/mpf-recomenda-medidas-urgentes-para-conclusao-de-regularizacao-de-quilombo-impedida-por-nao-quilombolas-no-para" target="_blank" rel="noopener">MPF — recomendação de 2025</a>
-            <a href="https://acervo.socioambiental.org/index.php/acervo/documentos/protocolo-de-consulta-previa-livre-e-informada-dos-quilombos-passagem-nazare-do" target="_blank" rel="noopener">ISA — Protocolo de Consulta</a>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
