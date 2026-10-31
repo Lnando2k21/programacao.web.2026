@@ -3,8 +3,8 @@
 Trabalho em Grupo 1 – Programação Web (HTML, CSS e JavaScript puros, sem bibliotecas).
 
 ## Integrantes
-- Nome 1 – matrícula
-- Nome 2 – matrícula
+- Anderson Nunes da Silva – 2021006458
+- Luiz Fernando Andrade – 2019007627 
 
 ## Descrição
 Aplicação que lista os municípios de qualquer estado brasileiro (padrão: Pará), permite pesquisar por nome, abrir os detalhes de cada um com os dados do **Censo 2022 sobre a população quilombola**, e manter uma lista de favoritos salva no navegador. Inclui uma seção informativa sobre pontos de atenção na saúde de comunidades quilombolas.
@@ -30,7 +30,7 @@ Aplicação que lista os municípios de qualquer estado brasileiro (padrão: Par
 2. Abra `index.html` no navegador (é necessário ter internet para consultar as APIs).
 3. Opcional: `python -m http.server 8000` na pasta do projeto e acesse `http://localhost:8000`.
 
-## Estrutura (um arquivo por competência)
+## Estrutura 
 ```
 index.html        HTML semântico
 css/style.css     CSS próprio e responsividade
