@@ -1,79 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Gastos</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saúde Quilombola: catálogo de municípios</title>
+  <meta name="description" content="Consulte municípios brasileiros, veja dados do Censo 2022 sobre a população quilombola e salve seus favoritos.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main class="container">
-        <header>
-            <p class="tag">PRÁTICA 3 · PROGRAMAÇÃO WEB</p>
-            <h1>Controle de Gastos</h1>
-            <p>Cadastre seus gastos e mantenha os registros salvos no navegador.</p>
-        </header>
+  <header class="topo">
+    <div class="miolo">
+      <h1>Saúde Quilombola</h1>
+      <p class="lead">Encontre um município, veja quantas pessoas quilombolas vivem nele segundo o Censo 2022 e guarde os que você quer acompanhar.</p>
+    </div>
+  </header>
 
-        <section class="card">
-            <h2>Novo gasto</h2>
+  <main class="miolo">
+    <section aria-labelledby="t-busca" class="busca">
+      <h2 id="t-busca" class="so-leitor">Buscar municípios</h2>
+      <form id="form-busca" novalidate>
+        <div class="campo">
+          <label for="uf">Estado</label>
+          <select id="uf" disabled><option>Carregando…</option></select>
+        </div>
+        <div class="campo campo-grande">
+          <label for="busca">Nome do município</label>
+          <input id="busca" type="search" placeholder="Ex.: Santarém" autocomplete="off">
+        </div>
+        <button type="submit" class="btn">Pesquisar</button>
+      </form>
+      <div class="abas" role="group" aria-label="Filtrar lista">
+        <button id="aba-todos" class="aba" aria-pressed="true" type="button">Todos</button>
+        <button id="aba-fav" class="aba" aria-pressed="false" type="button">Favoritos <span id="contador">0</span></button>
+      </div>
+    </section>
 
-            <form id="formGasto">
-                <div class="form-grid">
-                    <div class="campo">
-                        <label for="descricao">Descrição</label>
-                        <input type="text" id="descricao" placeholder="Ex.: Supermercado" required>
-                    </div>
+    <p id="status" role="status" aria-live="polite"></p>
+    <ul id="lista" class="grade"></ul>
+    <div class="mais"><button id="mais" class="btn btn-sec" type="button" hidden>Mostrar mais municípios</button></div>
 
-                    <div class="campo">
-                        <label for="categoria">Categoria</label>
-                        <select id="categoria" required>
-                            <option value="">Selecione</option>
-                            <option value="Alimentação">Alimentação</option>
-                            <option value="Transporte">Transporte</option>
-                            <option value="Moradia">Moradia</option>
-                            <option value="Lazer">Lazer</option>
-                            <option value="Educação">Educação</option>
-                            <option value="Outros">Outros</option>
-                        </select>
-                    </div>
+    <section class="saude" aria-labelledby="t-saude">
+      <h2 id="t-saude">Por que olhar para a saúde quilombola?</h2>
+      <p>A Política Nacional de Saúde Integral da População Negra (2009) reconhece que desigualdades de acesso, renda e território afetam a saúde de comunidades quilombolas. Pontos que costumam merecer atenção:</p>
+      <ul>
+        <li>Acesso à atenção primária: Unidade Básica de Saúde e equipe de Saúde da Família por perto.</li>
+        <li>Saúde da mulher e da criança: pré-natal, parto e acompanhamento do recém-nascido.</li>
+        <li>Doenças de maior prevalência na população negra, como doença falciforme, hipertensão e diabetes.</li>
+        <li>Água tratada, esgoto e lixo coletado nas comunidades.</li>
+        <li>Respeito aos saberes tradicionais: parteiras, benzedeiras e uso de plantas medicinais.</li>
+      </ul>
+      <p class="nota">Conteúdo informativo, produzido para fins didáticos. Não substitui a orientação de profissionais de saúde.</p>
+    </section>
+  </main>
 
-                    <div class="campo">
-                        <label for="valor">Valor (R$)</label>
-                        <input type="number" id="valor" min="0.01" step="0.01" placeholder="0,00" required>
-                    </div>
+  <footer class="miolo rodape">
+    <p>Dados: IBGE (API de Localidades e SIDRA, tabela 9578 do Censo 2022) e Wikipédia (resumo e foto do município, quando houver).</p>
+    <p> Trabalho realizado por Anderson Nunes e Luiz Fernando Andrade</p>
+    <p>@2026 Todos os direitos reservados</p>
+  </footer>
 
-                    <div class="campo">
-                        <label for="data">Data</label>
-                        <input type="date" id="data" required>
-                    </div>
-                </div>
+  <dialog id="detalhes" aria-labelledby="det-titulo">
+    <article id="det-corpo"></article>
+    <form method="dialog"><button class="btn btn-sec">Fechar</button></form>
+  </dialog>
 
-                <button type="submit" class="btn-primary">Adicionar gasto</button>
-            </form>
-        </section>
-
-        <section class="card">
-            <div class="lista-header">
-                <div>
-                    <h2>Gastos cadastrados</h2>
-                    <p id="contador">0 registros</p>
-                </div>
-                <button id="btnLimpar" class="btn-danger" type="button">Limpar registros</button>
-            </div>
-
-            <div id="listaGastos" class="lista"></div>
-
-            <div id="mensagemVazia" class="vazio">
-                Nenhum gasto cadastrado ainda.
-            </div>
-        </section>
-
-        <section class="total">
-            <span>Total dos gastos</span>
-            <strong id="totalGastos">R$ 0,00</strong>
-        </section>
-    </main>
-
-    <script src="js/script.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
